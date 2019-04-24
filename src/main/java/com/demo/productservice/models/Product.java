@@ -7,21 +7,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    String name;
     String category;
     String sub_category;
-    String name;
     double price;
     String size;
-    
     int count;
 
-    public Product(String category, String sub_category, double price, String size, int count) {
+    public Product(String name,String category, String sub_category, double price, String size, int count) {
+        this.name=name;
         this.category = category;
         this.sub_category = sub_category;
         this.price = price;
-
         this.size = size;
         this.count = count;
     }
@@ -30,8 +30,7 @@ public class Product {
     Product(){
 
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Long getId() {
         return id;
     }
@@ -50,6 +49,13 @@ public class Product {
 
     public String getSub_category() {
         return sub_category;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
     }
 
     public void setSub_category(String sub_category) {
