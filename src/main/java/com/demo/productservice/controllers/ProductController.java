@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public boolean updateProductCount(@PathVariable Long id){
+    public boolean updateProductCount(@PathVariable Integer id){
         return productService.updateProductCount(id);
     }
 

@@ -26,7 +26,7 @@ public class ProductRepositoryTest {
     public void repoSavesInDB() throws Exception {
         Product product = TestProducts.getProducts().get(0);
 
-        Long id = testEntityManager.persistAndGetId(product, Long.class);
+        Integer id = testEntityManager.persistAndGetId(product, Integer.class);
         Product foundProduct = productRepository.findById(id).orElse(null);
         assertThat(foundProduct.getCategory()).isEqualTo(product.getCategory());
     }

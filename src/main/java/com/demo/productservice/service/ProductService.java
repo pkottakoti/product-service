@@ -27,7 +27,7 @@ public class ProductService {
         return productRepository.findByCategoryAndSubCategory(category,sub_category);
     }
 
-    public boolean updateProductCount(Long id) {
+    public boolean updateProductCount(Integer id) {
         return productRepository.updateProductCount(id);
     }
 }

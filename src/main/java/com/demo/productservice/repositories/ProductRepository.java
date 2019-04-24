@@ -8,18 +8,18 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product,Integer> {
 
 
-    @Query(value = "SELECT * FROM product p WHERE p.category = :category and p.sub_category = :sub_category")
+    @Query(value = "SELECT * FROM product p WHERE p.category = :category and p.sub_category = :sub_category", nativeQuery = true)
     List<Product> findByCategoryAndSubCategory(
             @Param("category") String category, @Param("sub_category") String sub_category);
 
     List<Product> findByCategory(String category);
 
     @Modifying
-    @Query("update Product p set p.count = :p.count-1 where p.id = :id")
-    boolean updateProductCount(@Param("id") Long id);
+    @Query(value = "update product p set p.count = :p.count-1 where p.id = :id", nativeQuery = true)
+    boolean updateProductCount(@Param("id") Integer id);
 
 
 }
